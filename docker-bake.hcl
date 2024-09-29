@@ -2,6 +2,10 @@ variable "OWNER" {
   default = "opslabhq"
 }
 
+variable "GROUP" {
+  default = "base"
+}
+
 variable "FILE" {
   default = "alpine"
 }
@@ -52,9 +56,11 @@ target "push" {
     "linux/arm64",
   ]
   tags = [
+    "${OWNER}/${FILE}",
+    "${OWNER}/${FILE}:${TAG}",
     "ghcr.io/${OWNER}x/${FILE}",
     "ghcr.io/${OWNER}x/${FILE}:${TAG}",
-    "${OWNER}/${FILE}:${TAG}",
-    "${OWNER}/${FILE}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}",
+    "public.ecr.aws/${OWNER}/${GROUP}/${FILE}:${TAG}"
   ]
 }
