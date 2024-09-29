@@ -41,10 +41,8 @@ target "build" {
   inherits = ["settings"]
   output   = ["type=docker"]
   tags = [
-    "ghcr.io/${OWNER}x/${FILE}",
-    "ghcr.io/${OWNER}x/${FILE}:${TAG}",
-    "${OWNER}/${FILE}:${TAG}",
     "${OWNER}/${FILE}",
+    "${OWNER}/${FILE}:${TAG}",
   ]
 }
 
