@@ -3,7 +3,7 @@
 # renovate: datasource=docker depName=alpine
 ARG BASE_VERSION=3.20.3@sha256:beefdbd8a1da6d2915566fde36db9db0b524eb737fc57cd1367effd16dc0d06d
 
-FROM alpine:${BASE_VERSION} AS base
+FROM alpine:${BASE_VERSION:-latest} AS base
 
 RUN apk add --no-cache tzdata
 
