@@ -5,8 +5,13 @@ ARG BASE_VERSION=3.20.3@sha256:beefdbd8a1da6d2915566fde36db9db0b524eb737fc57cd13
 
 FROM alpine:${BASE_VERSION} AS base
 
-RUN apk add --no-cache tzdata \
-    && cp /usr/share/zoneinfo/Asia/Singapore /etc/localtime \
+RUN apk add --no-cache tzdata
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
+
+RUN cp /usr/share/zoneinfo/Asia/Singapore /etc/localtime \
     && echo "Asia/Singapore" > /etc/timezone \
     && apk del tzdata
 
